@@ -1,4 +1,3 @@
-contohnya
 # LifeMon – Healthy Lifestyle Monitoring App
 
 ## 👥 Team Members
