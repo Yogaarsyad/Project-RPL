@@ -1,4 +1,3 @@
-contohnya
 # LifeMon – Healthy Lifestyle Monitoring App
 
 ## 👥 Team Members
@@ -12,7 +11,7 @@ contohnya
 ## 🎯 Project Goals
 LifeMon aims to help users monitor their daily health through the following features:
 - 🍎 **Food Logging** – provides nutritional and calorie information of consumed food.  
-- 🏃 **Exercise Tracking** – records daily physical activities and calculates calories burned.  
+- 🏃 **Exercise Tracking** – records daily physical activities and calculates the calories burned.  
 - 😴 **Sleep Monitoring** – assists users in tracking their sleep quality.  
 - 📚 **Health Articles** – delivers relevant health information and tips.  
 - 🤖 **Personalized Recommendations** – offers tailored suggestions based on user data.  
