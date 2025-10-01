@@ -6,6 +6,7 @@ const cors = require('cors');
 // Import routes
 const userRoutes = require('./src/routes/userRoutes');
 const foodLogRoutes = require('./src/routes/foodLogRoutes');
+const sleepLogRoutes = require('./src/routes/sleepLogRoutes');
 
 dotenv.config();
 
@@ -18,6 +19,7 @@ app.use(express.json()); // Mengizinkan body parser untuk JSON
 // Routes
 app.use('/api/users', userRoutes);
 app.use('/api/food-logs', foodLogRoutes);
+app.use('/api/sleeplogs', sleepLogRoutes);
 
 app.get('/', (req, res) => {
   res.send('API LifeMon Berjalan...');
