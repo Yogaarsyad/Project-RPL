@@ -1,33 +1,57 @@
-// src/App.jsx
-
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 
-// Perbarui bagian ini
-import RegisterPage from './pages/RegisterPage.jsx';
-import LoginPage from './pages/LoginPage.jsx';
-import DashboardPage from './pages/DashboardPage.jsx';
+import HomePage from './pages/HomePage';
+import RegisterPage from './pages/RegisterPage';
+import LoginPage from './pages/LoginPage';
+import DashboardPage from './pages/DashboardPage';
+import ProfilePage from './pages/ProfilePage';
+import DashboardLayout from './components/DashboardLayout'; // Import Layout
 
-// Anda bisa menambahkan import untuk file CSS utama di sini jika ada
-// import './App.css'; 
+// Komponen wrapper untuk route yang dilindungi
+const ProtectedRoute = ({ children }) => {
+  const token = localStorage.getItem('token');
+  if (!token) {
+    return <Navigate to="/login" />;
+  }
+  return children;
+};
+
+// Layout khusus untuk Dashboard yang menangani logout
+const DashboardLayoutWithLogout = () => {
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    navigate('/login');
+  };
+  return <DashboardLayout onLogout={handleLogout} />;
+};
 
 function App() {
-  const token = localStorage.getItem('token');
-
   return (
     <Router>
       <div className="App">
         <Routes>
+          <Route path="/" element={<HomePage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/login" element={<LoginPage />} />
+          
+          {/* Rute Induk untuk Dashboard */}
           <Route 
             path="/dashboard" 
-            element={token ? <DashboardPage /> : <Navigate to="/login" />} 
-          />
-          <Route 
-            path="/" 
-            element={<Navigate to={token ? "/dashboard" : "/login"} />} 
-          />
+            element={
+              <ProtectedRoute>
+                <DashboardLayoutWithLogout />
+              </ProtectedRoute>
+            }
+          >
+            {/* Rute Anak: halaman default dashboard */}
+            <Route index element={<DashboardPage />} />
+            {/* Rute Anak: halaman profil */}
+            <Route path="profile" element={<ProfilePage />} />
+          </Route>
+
         </Routes>
       </div>
     </Router>

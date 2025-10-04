@@ -1,30 +1,31 @@
-// server.js
 const express = require('express');
-const dotenv = require('dotenv');
 const cors = require('cors');
+require('dotenv').config();
 
-// Import routes
+// Impor Routes
 const userRoutes = require('./src/routes/userRoutes');
 const foodLogRoutes = require('./src/routes/foodLogRoutes');
 const sleepLogRoutes = require('./src/routes/sleepLogRoutes');
-
-dotenv.config();
+const exerciseLogRoutes = require('./src/routes/exerciseLogRoutes');
 
 const app = express();
+const PORT = process.env.PORT || 5000;
 
 // Middleware
-app.use(cors()); // Mengizinkan request dari frontend
-app.use(express.json()); // Mengizinkan body parser untuk JSON
+app.use(cors());
+app.use(express.json());
 
-// Routes
+// Menggunakan Routes
 app.use('/api/users', userRoutes);
 app.use('/api/food-logs', foodLogRoutes);
-app.use('/api/sleeplogs', sleepLogRoutes);
+app.use('/api/sleep-logs', sleepLogRoutes);
+app.use('/api/exercise-logs', exerciseLogRoutes);
 
+// Endpoint dasar
 app.get('/', (req, res) => {
   res.send('API LifeMon Berjalan...');
 });
 
-const PORT = process.env.PORT || 5000;
-
-app.listen(PORT, () => console.log(`Server berjalan di port ${PORT}`));
+app.listen(PORT, () => {
+  console.log(`🚀 Server LifeMon aktif di http://localhost:${PORT}`);
+});

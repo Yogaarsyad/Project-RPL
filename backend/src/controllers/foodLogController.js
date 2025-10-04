@@ -12,6 +12,7 @@ exports.addFoodLog = async (req, res) => {
   }
 };
 
+
 exports.getFoodLogs = async (req, res) => {
   const userId = req.user.id;
   try {
