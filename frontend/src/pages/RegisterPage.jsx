@@ -31,7 +31,7 @@ function RegisterPage() {
       <div className="hidden lg:flex lg:w-1/2 bg-primary items-center justify-center p-12">
         <div className="text-white text-center">
           <h1 className="text-4xl font-bold mb-4">LifeMon</h1>
-          <p className="text-lg text-blue-200">Pantau dan tingkatkan kualitas gaya hidup sehat Anda setiap hari.</p>
+          <p className="text-lg text-blue-200">Monitor and improve the quality of your healthy lifestyle every day.</p>
         </div>
       </div>
 
@@ -39,14 +39,14 @@ function RegisterPage() {
       <div className="w-full lg:w-1/2 flex items-center justify-center bg-secondary p-8">
         <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
           <h2 className="text-3xl font-bold text-center text-dark mb-8">
-            Buat Akun Baru
+           Create New Account
           </h2>
           
           <form onSubmit={handleSubmit}>
             {/* Input untuk Nama Lengkap */}
             <div className="mb-4 relative">
               <label htmlFor="nama" className="block text-sm font-medium text-gray-700 mb-1">
-                Nama Lengkap
+                Full name
               </label>
               <FiUser className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 mt-2" />
               <input
@@ -59,7 +59,7 @@ function RegisterPage() {
             {/* Input untuk Email */}
             <div className="mb-4 relative">
               <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-                Alamat Email
+                Email address
               </label>
               <FiMail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 mt-2" />
               <input
@@ -86,14 +86,14 @@ function RegisterPage() {
               type="submit"
               className="w-full bg-primary text-white py-2.5 px-4 rounded-md hover:bg-primary-hover focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors"
             >
-              Daftar
+              List Register
             </button>
           </form>
 
           <p className="text-sm text-center text-gray-600 mt-6">
-            Sudah punya akun?{' '}
+           Already have an account?{' '}
             <Link to="/login" className="font-medium text-primary hover:underline">
-              Login di sini
+             Login here
             </Link>
           </p>
         </div>
