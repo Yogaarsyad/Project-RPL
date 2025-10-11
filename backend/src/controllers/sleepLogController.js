@@ -1,10 +1,10 @@
-const SleepLog = require('../models/sleepLogModel');
+const sleepLogModel = require('../models/sleepLogModel');
 
 exports.addSleepLog = async (req, res) => {
+  const { tanggal, waktu_tidur, waktu_bangun, kualitas_tidur } = req.body;
+  const userId = req.user.id;
   try {
-    const { tanggal, waktuTidur, waktuBangun, kualitasTidur } = req.body;
-    const userId = req.user.id;
-    const log = await SleepLog.create(userId, tanggal, waktuTidur, waktuBangun, kualitasTidur);
+    const log = await sleepLogModel.createSleepLog(userId, tanggal, waktu_tidur, waktu_bangun, kualitas_tidur);
     res.status(201).json(log);
   } catch (err) {
     res.status(500).json({ error: 'Failed to add sleep log' });
@@ -12,9 +12,9 @@ exports.addSleepLog = async (req, res) => {
 };
 
 exports.getSleepLogs = async (req, res) => {
+  const userId = req.user.id;
   try {
-    const userId = req.user.id;
-    const logs = await SleepLog.getByUser(userId);
+    const logs = await sleepLogModel.getSleepLogsByUserId(userId);
     res.json(logs);
   } catch (err) {
     res.status(500).json({ error: 'Failed to fetch sleep logs' });

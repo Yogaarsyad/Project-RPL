@@ -21,3 +21,7 @@ export const updateProfile = (profileData) => API.put('/users/profile', profileD
 // Fungsi untuk Food Log
 export const addFoodLog = (logData) => API.post('/food-logs', logData);
 export const getFoodLogs = () => API.get('/food-logs');
+
+// Fungsi untuk Sleep Log
+export const addSleepLog = (logData) => API.post('/sleep-logs', logData);
+export const getSleepLogs = () => API.get('/sleep-logs');
